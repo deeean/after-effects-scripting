@@ -1,14 +1,135 @@
 declare class File {
-  constructor(dirname: string);
+  constructor(path: string);
 }
 
 declare class Item {
   name: string;
 }
 
-declare class CompItem extends Item {}
+declare class FootageItem extends Item {
+  addGuide: unknown;
+  comment: unknown;
+  duration: unknown;
+  dynamicLinkGUID: unknown;
+  file: unknown;
+  footageMissing: unknown;
+  frameDuration: unknown;
+  frameRate: unknown;
+  getRenderGUID: unknown;
+  guides: unknown;
+  hasAudio: unknown;
+  hasVideo: unknown;
+  height: unknown;
+  id: unknown;
+  isMediaReplacementCompatible: unknown;
+  label: unknown;
+  mainSource: unknown;
+  openInViewer: unknown;
+  parentFolder: unknown;
+  pixelAspect: unknown;
+  proxySource: unknown;
+  remove: unknown;
+  removeGuide: unknown;
+  replace(file: File): void;
+  replaceWithPlaceholder: unknown;
+  replaceWithSequence: unknown;
+  replaceWithSolid: unknown;
+  selected: unknown;
+  setGuide: unknown;
+  setProxy: unknown;
+  setProxyToNone: unknown;
+  setProxyWithPlaceholder: unknown;
+  setProxyWithSequence: unknown;
+  setProxyWithSolid: unknown;
+  time: unknown;
+  typeName: unknown;
+  useProxy: unknown;
+  usedIn: unknown;
+  width: unknown;
+}
 
-declare class ItemCollection extends Array {
+declare class CompItem extends Item {
+  activeCamera: unknown;
+  addGuide: unknown;
+  applyPreset: unknown;
+  bgColor: unknown;
+  comment: unknown;
+  counters: unknown;
+  displayStartFrame: unknown;
+  displayStartTime: unknown;
+  doContentAwareFill: unknown;
+  draft3d: unknown;
+  dropFrame: unknown;
+  duplicate: unknown;
+  duration: unknown;
+  dynamicLinkGUID: unknown;
+  exportAsMotionGraphicsTemplate: unknown;
+  footageMissing: unknown;
+  frameBlending: unknown;
+  frameDuration: unknown;
+  frameRate: unknown;
+  getMotionGraphicsTemplateControllerName: unknown;
+  getRenderGUID: unknown;
+  guides: unknown;
+  hasAudio: unknown;
+  hasVideo: unknown;
+  height: unknown;
+  hideShyLayers: unknown;
+  id: unknown;
+  isMediaReplacementCompatible: unknown;
+  label: unknown;
+  layer: unknown;
+  layers: unknown;
+  markerProperty: unknown;
+  motionBlur: unknown;
+  motionBlurAdaptiveSampleLimit: unknown;
+  motionBlurSamplesPerFrame: unknown;
+  motionGraphicsTemplateControllerCount: unknown;
+  motionGraphicsTemplateName: unknown;
+  numLayers: unknown;
+  openInEssentialGraphics: unknown;
+  openInViewer: unknown;
+  parentFolder: unknown;
+  pixelAspect: unknown;
+  preserveNestedFrameRate: unknown;
+  preserveNestedResolution: unknown;
+  proxySource: unknown;
+  ramPreviewTest: unknown;
+  remove: unknown;
+  removeGuide: unknown;
+  renderFrame: unknown;
+  renderer: unknown;
+  renderers: unknown;
+  resolutionFactor: unknown;
+  saveDraftFrameToPng: unknown;
+  saveFrameToPng(frame: number, file: File);
+  selected: unknown;
+  selectedLayers: unknown;
+  selectedProperties: unknown;
+  setGuide: unknown;
+  setMotionGraphicsControllerName: unknown;
+  setProxy: unknown;
+  setProxyToNone: unknown;
+  setProxyWithPlaceholder: unknown;
+  setProxyWithSequence: unknown;
+  setProxyWithSolid: unknown;
+  shutterAngle: unknown;
+  shutterPhase: unknown;
+  time: unknown;
+  typeName: unknown;
+  useProxy: unknown;
+  usedIn: unknown;
+  width: unknown;
+  workAreaDuration: unknown;
+  workAreaStart: unknown;
+}
+
+declare interface ItemCollectionBase {
+  readonly length: number;
+  [index: number]: Item;
+}
+
+declare interface ItemCollection extends ItemCollectionBase {
   addComp: unknown;
   addFolder: unknown;
 }
@@ -150,3 +271,5 @@ declare class App {
 }
 
 declare var app: App;
+
+declare function alert(o: unknown): void;

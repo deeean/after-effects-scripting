@@ -2,6 +2,9 @@
   "compilerOptions": {
     "allowJs": true,
     "module": "es2015",
+    "lib": [
+      "esnext"
+    ],
     "declaration": true,
     "declarationDir": "dist",
     "moduleResolution": "node",
