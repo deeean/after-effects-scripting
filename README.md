@@ -1,1 +1,1 @@
-# after-effect-script
+# after-effects-scripting
