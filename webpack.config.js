@@ -15,6 +15,7 @@ class ExecuteAppleScriptPlugin {
         'JavaScript',
         '-e',
         `var ae = Application('Adobe After Effects 2022');
+        ae.activate();
         ae.doscriptfile("${dest}");`,
       ]);
     });

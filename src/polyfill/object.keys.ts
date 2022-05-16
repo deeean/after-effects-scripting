@@ -1,17 +1,10 @@
-function keys(o: object): string[] {
-  if (o !== Object(o)) {
-    throw TypeError('Object.keys called on non-object');
-  }
-
-  var ret = [],
-    p;
-  for (p in o) {
-    if (Object.prototype.hasOwnProperty.call(o, p)) {
-      ret.push(p);
+Object.keys = (o: object): string[] => {
+  const keys = [];
+  for (const property in o) {
+    if (Object.prototype.hasOwnProperty.call(o, property)) {
+      keys.push(property);
     }
   }
 
-  return ret;
-}
-
-Object.keys = keys;
+  return keys;
+};

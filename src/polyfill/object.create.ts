@@ -1,15 +1,15 @@
-function create(
+Object.create = <T>(
   o: object | null,
   properties?: PropertyDescriptorMap & ThisType<any>,
-): any {
+): any => {
   if (typeof o !== 'object') {
     throw TypeError();
   }
 
-  function Constructor() {}
-  Constructor.prototype = o;
+  function constructor() {}
+  constructor.prototype = o;
 
-  var instance = new Constructor();
+  const instance = new constructor();
 
   if (o) {
     o.constructor = instance;
@@ -19,10 +19,9 @@ function create(
     if (properties !== Object(properties)) {
       throw TypeError();
     }
+
     Object.defineProperties(o, properties);
   }
 
   return o;
-}
-
-Object.create = create;
+};

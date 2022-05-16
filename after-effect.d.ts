@@ -2,6 +2,82 @@ declare class File {
   constructor(path: string);
 }
 
+type Bounds = [number, number, number, number];
+
+declare class ScriptUIGraphics {
+  backgroundColor: unknown;
+  disabledBackgroundColor: unknown;
+  disabledForegroundColor: unknown;
+  font: unknown;
+  foregroundColor: unknown;
+  BrushType: unknown;
+  currentPath: unknown;
+  currentPoint: unknown;
+  PenType: unknown;
+}
+
+declare class AutoLayoutManager {
+  layout(unknown: boolean): void;
+  resize(): void;
+}
+
+declare class Window {
+  constructor(
+    kind: stirng,
+    title: string,
+    unknown?: unknown,
+    options?: { resizeable?: boolean; closeButton?: boolean },
+  );
+  add(
+    kind: string,
+    bounds: Bounds,
+    text: strin,
+    options?: { name?: string; multiline?: boolean; readonly: boolean },
+  ): Window;
+  bounds: Bounds;
+  show(): void;
+  center(): void;
+  graphics: ScriptUIGraphics;
+  visible: boolean;
+  frameBounds: unknown;
+  frameLocation: unknown;
+  frameSize: unknown;
+  location: unknown;
+  maximumSize: unknown;
+  minimumSize: unknown;
+  preferredSize: unknown;
+  size: unknown;
+  windowBounds: unknown;
+  characters: unknown;
+  justify: unknown;
+  text: string;
+  active: boolean;
+  shortcutKey: unknown;
+  cancelElement: unknown;
+  defaultElement: unknown;
+  maximized: unknown;
+  minimized: unknown;
+  opacity: number;
+  alignChildren: Array<string>;
+  children: unknown;
+  layout: AutoLayoutManager;
+  margins: number;
+  orientation: string;
+  spacing: number;
+  alignment: unknown;
+  properties: unknown;
+  enabled: unknown;
+  helpTip: unknown;
+  indent: unknown;
+  parent: Window | null;
+  textDirection: unknown;
+  window: Window;
+  type: unknown;
+  onResize?: () => void;
+  onChanging?: () => void;
+  onResizing?: () => void;
+}
+
 declare class Item {
   name: string;
 }
@@ -207,12 +283,12 @@ declare class App {
   availableGPUAccelTypes: unknown;
   beginSuppressDialogs: unknown;
   beginUndoGroup: unknown;
-  buildName: unknown;
-  buildNumber: unknown;
+  readonly buildName: string;
+  readonly buildNumber: number;
   cancelTask: unknown;
   cancelTimeout: unknown;
   ccUserGuid: unknown;
-  disableRendering: unknown;
+  disableRendering: boolean;
   dispatchCEPEvent: unknown;
   download: unknown;
   effects: unknown;
@@ -221,7 +297,7 @@ declare class App {
   endWatchFolder: unknown;
   executeCommand: unknown;
   exitAfterLaunchAndEval: unknown;
-  exitCode: unknown;
+  exitCode: number;
   findMenuCommandId: unknown;
   getCCXUserJSONData: unknown;
   getDebugDatabase: unknown;
@@ -239,7 +315,7 @@ declare class App {
   language: unknown;
   learnPanelContentDirPath: unknown;
   log: unknown;
-  memoryInUse: unknown;
+  readonly memoryInUse: number;
   newProject: unknown;
   newTeamProject: unknown;
   objectToJSON: unknown;
@@ -257,7 +333,7 @@ declare class App {
   removeDebugDatabaseEntry: unknown;
   reportErrorOnMissingFrame: unknown;
   saveProjectOnCrash: unknown;
-  scheduleTask: unknown;
+  scheduleTask(stringToExecute: string, milliseconds: number, repeat: boolean);
   setDebugDatabase: unknown;
   setExtensionPersistent: unknown;
   setMemoryUsageLimits: unknown;
@@ -270,6 +346,35 @@ declare class App {
   watchFolder: unknown;
 }
 
+declare class Helper {
+  sleep(milliseconds: number): void;
+  error: unknown;
+  version: unknown;
+  build: unknown;
+  buildDate: unknown;
+  global: unknown;
+  stack: unknown;
+  level: unknown;
+  flags: unknown;
+  strict: unknown;
+  locale: unknown;
+  localize: unknown;
+  decimalPoint: unknown;
+  memCache: unknown;
+  appEncoding: unknown;
+  screens: unknown;
+  os: unknown;
+  fileName: unknown;
+  line: unknown;
+  hiresTimer: unknown;
+  dictionary: unknown;
+  engineName: unknown;
+  includePath: unknown;
+  _ADBE_LIBS_CORE: unknown;
+  _ADBE_LIBS_AEFT: unknown;
+}
+
 declare var app: App;
+declare var $: Helper;
 
 declare function alert(o: unknown): void;
