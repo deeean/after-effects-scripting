@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const { spawn } = require('child_process');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
@@ -53,7 +54,11 @@ module.exports = {
       },
     ],
   },
-  plugins: [new CleanWebpackPlugin(), new ExecuteAppleScriptPlugin()],
+  plugins: [
+    new webpack.DefinePlugin({}),
+    new CleanWebpackPlugin(),
+    new ExecuteAppleScriptPlugin(),
+  ],
   resolve: {
     alias: {
       '~': path.resolve(__dirname, 'src/'),

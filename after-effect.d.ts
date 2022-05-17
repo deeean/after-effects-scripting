@@ -4,11 +4,19 @@ declare class File {
 
 type Bounds = [number, number, number, number];
 
+declare class SystemUIFont {
+  family: string;
+  name: unknown;
+  size: unknown;
+  style: unknown;
+  substitute: unknown;
+}
+
 declare class ScriptUIGraphics {
   backgroundColor: unknown;
   disabledBackgroundColor: unknown;
   disabledForegroundColor: unknown;
-  font: unknown;
+  font: SystemUIFont;
   foregroundColor: unknown;
   BrushType: unknown;
   currentPath: unknown;
@@ -21,6 +29,34 @@ declare class AutoLayoutManager {
   resize(): void;
 }
 
+declare class EditText {
+  textselection: unknown;
+  characters: unknown;
+  justify: unknown;
+  text: unknown;
+  graphics: ScriptUIGraphics;
+  visible: unknown;
+  bounds: unknown;
+  location: unknown;
+  maximumSize: unknown;
+  minimumSize: unknown;
+  preferredSize: unknown;
+  size: unknown;
+  windowBounds: unknown;
+  active: unknown;
+  shortcutKey: unknown;
+  alignment: unknown;
+  children: unknown;
+  properties: unknown;
+  enabled: unknown;
+  helpTip: unknown;
+  indent: unknown;
+  parent: unknown;
+  textDirection: unknown;
+  window: unknown;
+  type: unknown;
+}
+
 declare class Window {
   constructor(
     kind: stirng,
@@ -29,10 +65,26 @@ declare class Window {
     options?: { resizeable?: boolean; closeButton?: boolean },
   );
   add(
+    kind: 'edittext',
+    bounds: Bounds,
+    text: string,
+    options?: {
+      name?: string;
+      multiline?: boolean;
+      readonly?: boolean;
+      scrolling?: boolean;
+    },
+  ): EditText;
+  add(
     kind: string,
     bounds: Bounds,
-    text: strin,
-    options?: { name?: string; multiline?: boolean; readonly: boolean },
+    text: string,
+    options?: {
+      name?: string;
+      multiline?: boolean;
+      readonly?: boolean;
+      scrolling?: boolean;
+    },
   ): Window;
   bounds: Bounds;
   show(): void;
@@ -286,7 +338,7 @@ declare class App {
   readonly buildName: string;
   readonly buildNumber: number;
   cancelTask: unknown;
-  cancelTimeout: unknown;
+  cancelTimeout(id: number): void;
   ccUserGuid: unknown;
   disableRendering: boolean;
   dispatchCEPEvent: unknown;
@@ -339,7 +391,7 @@ declare class App {
   setMemoryUsageLimits: unknown;
   setMultiFrameRenderingConfig: unknown;
   setSavePreferencesOnQuit: unknown;
-  setTimeout: unknown;
+  setTimeout(callbackfn: () => void, milliseconds: number): number;
   settings: unknown;
   themeColor: unknown;
   version: unknown;
@@ -372,6 +424,41 @@ declare class Helper {
   includePath: unknown;
   _ADBE_LIBS_CORE: unknown;
   _ADBE_LIBS_AEFT: unknown;
+}
+
+declare class ScriptUI {
+  public static newFont(
+    family: string,
+    style: string,
+    size: number,
+  ): SystemUIFont;
+
+  public static applicationFonts: unknown;
+  public static compatibility: unknown;
+  public static coreVersion: unknown;
+  public static frameworkName: unknown;
+  public static logFile: unknown;
+  public static enableLogging: unknown;
+  public static version: string;
+  public static workspace: unknown;
+  public static workspaces: unknown;
+  public static events: unknown;
+  public static environment: unknown;
+
+  public static Alignment: {
+    TOP: 1;
+    BOTTOM: 2;
+    LEFT: 3;
+    RIGHT: 4;
+    FILL: 5;
+    CENTER: 6;
+    BEFORE: 7;
+    AFTER: 8;
+  };
+
+  public static WritingDirection: { LTR: 0; RTL: 1 };
+
+  public static FontStyle: { REGULAR: 0; BOLD: 1; ITALIC: 2; BOLDITALIC: 3 };
 }
 
 declare var app: App;

@@ -1,6 +1,3 @@
 export default class Utils {
-  public static setTimeout(callback: () => void, milliseconds: number) {
-    $.sleep(milliseconds);
-    callback();
-  }
+  public static setTimeout(callback: () => void, milliseconds: number) {}
 }
